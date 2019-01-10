@@ -1,0 +1,4 @@
+.Skill {
+  display: flex;
+  flex-direction: row;
+}

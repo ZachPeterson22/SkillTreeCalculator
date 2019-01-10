@@ -1,0 +1,81 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px;
+  height: 75px;
+  width: 75px;
+  background-color: #eeeeee;
+  border: black 2px solid;
+}
+
+.First,
+.First2,
+.First3 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.Second,
+.Second2,
+.Second3 {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.Third,
+.Third2,
+.Third3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.Fourth,
+.Fourth2,
+.Fourth3 {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.Fifth,
+.Fifth2,
+.Fifth3 {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.Sixth,
+.Sixth2,
+.Sixth3 {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.Seventh,
+.Seventh2,
+.Seventh3 {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+.Eighth,
+.Eighth2,
+.Eighth3 {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.Ninth,
+.Ninth2,
+.Ninth3 {
+  grid-column: 3;
+  grid-row: 5;
+}
+
+.Tenth,
+.Tenth2,
+.Tenth3 {
+  grid-column: 2;
+  grid-row: 6;
+}
