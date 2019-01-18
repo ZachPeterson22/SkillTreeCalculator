@@ -7,5 +7,20 @@
   border: solid 2px black;
   margin: 5px;
   padding: 5px;
-  border-radius: 25px;
+  height: 550px;
+  width: 280px;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: relative;
 }
+
+/* for when i color the tree based on skills */
+.neutral {
+  width: inherit;
+  background: linear-gradient(red, black);
+  position: absolute;
+  top: 0;
+}
+
+/* .full {
+  height: inherit;
+} */

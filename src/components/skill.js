@@ -11,13 +11,16 @@ class Skill extends Component {
     // console.log("Skill: ");
     // console.log(this.props);
     let className = "box " + this.props.skill.name;
+    // for(let i = 0; i < this.props.skill.activeClasses)
     return (
       <div
         className={className}
+        id={this.props.skill.currentPts}
         onClick={this.addPoints.bind(this, this.props.skill.name)}
       >
-        <div>{this.props.skill.name}</div>
-        <div>
+        <div className={this.props.skill.activeClass} />
+        <div className="skill-text">{this.props.skill.name}</div>
+        <div className="skill-text">
           {this.props.skill.currentPts} / {this.props.skill.maxPts}
         </div>
       </div>

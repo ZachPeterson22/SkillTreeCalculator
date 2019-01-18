@@ -6,8 +6,53 @@
   margin: 5px;
   height: 75px;
   width: 75px;
-  background-color: #eeeeee;
+  background-color: grey;
   border: black 2px solid;
+  position: relative;
+}
+
+.skill-text {
+  z-index: 2;
+}
+
+.default,
+.default-single,
+.a,
+.b,
+.c,
+.d,
+.e {
+  width: calc(75px - 4px);
+  background-color: orange;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.default-single {
+  background-color: green;
+  height: calc(75px - 4px);
+}
+
+.a {
+  height: calc(15px - 4px);
+}
+
+.b {
+  height: calc(30px - 4px);
+}
+
+.c {
+  height: calc(45px - 4px);
+}
+
+.d {
+  height: calc(60px - 4px);
+}
+
+.e {
+  height: calc(75px - 4px);
+  background-color: green;
 }
 
 .First,

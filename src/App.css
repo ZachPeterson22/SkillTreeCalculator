@@ -1,15 +1,21 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #0ab200;
+  background-color: lightskyblue;
+  /* background-color: rgba(184, 250, 129, 1); */
+  /* background-color: rgba(112, 190, 93, 1); */
 }
 
 .resetBtn {
   border: black 2px solid;
-  background-color: #ccc;
+  /* background-color: #ccc; */
+  background-color: lightcoral;
   padding: 10px;
   margin: 15px;
 }
