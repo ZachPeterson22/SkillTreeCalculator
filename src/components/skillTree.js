@@ -3,42 +3,40 @@ import Skill from "./skill";
 import "../styles/skillTree.css";
 
 class Tree extends Component {
-  addPoints(name) {
-    this.props.addPoint(name);
-  }
 
-  render() {
-    let skillItems;
-    let pointCalc = this.props.tree.points * 25;
+  getStyle = (points) => {
+    let pointCalc = points * 25;
     let style = {};
 
-    if (this.props.tree.points <= 22) {
+    if (points <= 22) {
       style = {
         width: "calc(280px - 4px)",
         height: "calc(" + pointCalc + "px - 4px)"
       };
-    } else if (this.props.tree.points > 22) {
+    } else if (points > 22) {
       style = {
         width: "calc(280px - 4px)",
         height: "calc(550px - 4px)"
       };
     }
+    return style;
+  }
 
-    if (this.props.tree) {
-      skillItems = this.props.tree.skill.map(skill => {
-        return (
-          <Skill
-            addPoint={this.addPoints.bind(this)}
-            key={skill.name}
-            skill={skill}
-          />
-        );
-      });
-    }
+  render() {
+    const { points, skill } = this.props.tree;
+
     return (
       <div className="skillTree">
-        <div className="neutral" style={style} />
-        {skillItems}
+        <div className="neutral" style={this.getStyle(points)} />
+        {
+          skill.map((skill) => (
+            <Skill
+              handlePoints={this.props.handlePoints}
+              key={skill.name}
+              skill={skill}
+            />
+          ))
+        }
       </div>
     );
   }

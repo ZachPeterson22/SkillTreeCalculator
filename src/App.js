@@ -6,9 +6,205 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      totalPoints: 50,
       trees: [
         {
-          skill: []
+          id: "Tree 1",
+          points: 0,
+          skill: [
+            {
+              name: "First",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Second",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Third",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Fourth",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Fifth",
+              currentPts: 0,
+              maxPts: 1,
+              activeClass: "default"
+            },
+            {
+              name: "Sixth",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Seventh",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Eighth",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Ninth",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Tenth",
+              currentPts: 0,
+              maxPts: 1,
+              activeClass: "default"
+            }
+          ]
+        },
+        {
+          id: "Tree 2",
+          points: 0,
+          skill: [
+            {
+              name: "First2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Second2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Third2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Fourth2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Fifth2",
+              currentPts: 0,
+              maxPts: 1,
+              activeClass: "default"
+            },
+            {
+              name: "Sixth2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Seventh2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Eighth2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Ninth2",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Tenth2",
+              currentPts: 0,
+              maxPts: 1,
+              activeClass: "default"
+            }
+          ]
+        },
+        {
+          id: "Tree 3",
+          points: 0,
+          skill: [
+            {
+              name: "First3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Second3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Third3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Fourth3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Fifth3",
+              currentPts: 0,
+              maxPts: 1,
+              activeClass: "default"
+            },
+            {
+              name: "Sixth3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Seventh3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Eighth3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Ninth3",
+              currentPts: 0,
+              maxPts: 5,
+              activeClass: "default"
+            },
+            {
+              name: "Tenth3",
+              currentPts: 0,
+              maxPts: 1,
+              activeClass: "default"
+            }
+          ]
         }
       ]
     };
@@ -18,7 +214,7 @@ class App extends Component {
     this.resetTrees();
   }
 
-  resetTrees() {
+  resetTrees = () => {
     this.setState({
       totalPoints: 50,
       trees: [
@@ -224,17 +420,23 @@ class App extends Component {
     });
   }
 
-  handlePoints(name) {
-    let tempStorage = this.state.trees;
-    let tree = tempStorage.find(i => i.skill.find(x => x.name === name));
-    let skill = tree.skill.find(x => x.name === name);
-    if (skill.currentPts < skill.maxPts) {
-      tree.points++;
-      skill.currentPts++;
-      this.changeTreeClass(tree);
-      this.changeClass(skill);
-    }
-    this.setState({ tempStorage });
+  handlePoints = (name) => {
+    this.setState({
+      trees: this.state.trees.map(tree => {
+        tree.skill.map(skill => {
+          if (skill.name === name) {
+            if (skill.currentPts < skill.maxPts) {
+              tree.points++;
+              skill.currentPts++;
+              // this.changeTreeClass(tree);
+              this.changeClass(skill);
+            }
+          }
+          return skill;
+        })
+        return tree;
+      })
+    })
   }
 
   changeTreeClass(tree) {
@@ -266,10 +468,10 @@ class App extends Component {
     return (
       <div className="App">
         <Tree
-          addPoint={this.handlePoints.bind(this)}
+          handlePoints={this.handlePoints}
           trees={this.state.trees}
         />
-        <div className="resetBtn" onClick={this.resetTrees.bind(this)}>
+        <div className="resetBtn" onClick={this.resetTrees}>
           RESET SKILL POINTS
         </div>
       </div>
